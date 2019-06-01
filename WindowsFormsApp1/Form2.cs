@@ -12,10 +12,13 @@ namespace WindowsFormsApp1
 {
     public partial class Form2 : System.Windows.Forms.Form
     {
-        public Form2()
+        int index; //List <subject> 인덱스
+        Subject subject;
+        public Form2(Subject subject)
         {
             InitializeComponent();
             init();
+            this.subject = subject;
         }
         void init()
         {
@@ -26,7 +29,7 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form1.title = textBox1.Text;
+            subject.Tabname = textBox1.Text;
             Close();
         }
 

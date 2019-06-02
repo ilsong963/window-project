@@ -83,11 +83,22 @@ namespace WindowsFormsApp1
             li.DragEnter += new System.Windows.Forms.DragEventHandler(this.FileDrop_DragEnter);
             li.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DoubleClick);
 
+            SetHeight(li,100);
+
+
+        }
+        private void SetHeight(ListView LV, int height)
+        {
+            // listView 높이 지정
+            ImageList imgList = new ImageList();
+            imgList.ImageSize = new Size(1, height);
+            LV.SmallImageList = imgList;
         }
         private void DoubleClick(object sender, MouseEventArgs e)
         {
-            MessageBox.Show(li.SelectedItems.ToString());
-            System.Diagnostics.Process.Start(li.SelectedItems.ToString());      // 외부 프로그램
+            System.Diagnostics.Process.Start(li.FocusedItem.Name);      // 외부 프로그램
+
+
 
         }
         

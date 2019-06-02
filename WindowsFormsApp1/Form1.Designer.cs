@@ -44,7 +44,7 @@
             this.Tabcontrol1.Location = new System.Drawing.Point(12, 12);
             this.Tabcontrol1.Name = "Tabcontrol1";
             this.Tabcontrol1.SelectedIndex = 0;
-            this.Tabcontrol1.Size = new System.Drawing.Size(409, 267);
+            this.Tabcontrol1.Size = new System.Drawing.Size(419, 267);
             this.Tabcontrol1.TabIndex = 3;
             // 
             // button1

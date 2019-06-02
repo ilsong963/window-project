@@ -61,8 +61,25 @@ namespace WindowsFormsApp1
         private void FileDrop_DragDrop(object sender, DragEventArgs e)
         {
             string[] fileNames = (string[])e.Data.GetData(DataFormats.FileDrop);
-            setItem(fileNames[0]);
+            if (!isExist(fileNames[0]))
+            {
 
+                setItem(fileNames[0]);
+            }
+
+        }
+        private bool isExist(string fileName)
+        {
+
+            foreach (ListViewItem item in li.Items)
+            {
+                if(item.Name == fileName)
+                {
+                    return true;
+                }
+            }
+            
+            return false;
         }
         private void setItem(string filename)
         {

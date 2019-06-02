@@ -12,12 +12,12 @@ namespace WindowsFormsApp1
 {
     public partial class Form2 : System.Windows.Forms.Form
     {
-        Subject subject;
-        public Form2(Subject subject)
+        Tab tab;
+        public Form2(Tab tab)
         {
             InitializeComponent();
             init();
-            this.subject = subject;
+            this.tab = tab;
         }
         void init()
         {
@@ -28,7 +28,7 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            subject.Tabname = textBox1.Text;
+            tab.Tabname = textBox1.Text;
             Close();
         }
 

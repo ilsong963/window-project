@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace WindowsFormsApp1
 {
-    public class Subject
+    public class Tab
     {
         string tabname;
         ImageList imagelist = new ImageList();

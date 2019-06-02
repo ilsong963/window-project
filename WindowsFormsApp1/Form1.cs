@@ -14,7 +14,7 @@ namespace WindowsFormsApp1
     {
         TabPage myTabPage;
         ImageList imagelist = new ImageList();
-         List<Subject> subject = new List<Subject>();
+         List<Tab> subject = new List<Tab>();
 
 
 
@@ -38,7 +38,7 @@ namespace WindowsFormsApp1
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Subject temp = new Subject();
+            Tab temp = new Tab();
 
             Form2 form2 = new Form2(temp);
             this.AddOwnedForm(form2);

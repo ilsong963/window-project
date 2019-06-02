@@ -53,7 +53,6 @@ namespace WindowsFormsApp1
                 myTabPage = new TabPage(temp.Tabname);
 
                 temp.listSetting();
-                temp.li.ContextMenuStrip = this.contextMenuStrip1;
 
                 myTabPage.Controls.Add(temp.li);
                 Tabcontrol1.TabPages.Add(myTabPage);
@@ -93,5 +92,16 @@ namespace WindowsFormsApp1
         {
             this.Opacity = trackBar1.Value * 0.125;
         }
+
+        private void listView1_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+        
     }
 }

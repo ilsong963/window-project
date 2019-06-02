@@ -6,11 +6,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using System.IO;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace WindowsFormsApp1
 {
     public class Tab
     {
+        [DllImport("user32.dll")]
+        private static extern bool ShowWindowAsync(IntPtr findname, int howShow);
+        [DllImport("user32.dll")]
+        private static extern bool SetForegroundWindow(IntPtr findname);
+        [DllImport("user32.dll")]
+        private static extern IntPtr FindWindow(string SClassName, string SWindowName);
+
         string tabname;
 
         ImageList imagelist = new ImageList();
@@ -96,9 +105,20 @@ namespace WindowsFormsApp1
         }
         private void DoubleClick(object sender, MouseEventArgs e)
         {
-            System.Diagnostics.Process.Start(li.FocusedItem.Name);      // 외부 프로그램
+            Process[] processList = Process.GetProcessesByName(li.FocusedItem.Name);
+            if (processList.Length < 1)
+            {
+                System.Diagnostics.Process.Start(li.FocusedItem.Name);      // 외부 프로그램 실행
 
-
+            }
+            else
+            {
+                IntPtr findname = FindWindow(null, li.FocusedItem.Name);
+                // 프로그램이 최소화 되어 있다면 활성화 시킴 
+                ShowWindowAsync(findname, 1);
+                // 윈도우에 포커스를 줘서 최상위로 만듬
+                SetForegroundWindow(findname);
+            }
 
         }
         

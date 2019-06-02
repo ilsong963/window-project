@@ -12,7 +12,6 @@ namespace WindowsFormsApp1
 {
     public partial class Form2 : System.Windows.Forms.Form
     {
-        int index; //List <subject> 인덱스
         Subject subject;
         public Form2(Subject subject)
         {

@@ -11,10 +11,11 @@ namespace WindowsFormsApp1
     public class Subject
     {
         string tabname;
-        ImageList imagelist;
+        ImageList imagelist = new ImageList();
 
         ListViewItem objListItems;
         public ListView li;
+        int imageindex = 0;
         public string Tabname
         {
             get
@@ -41,19 +42,16 @@ namespace WindowsFormsApp1
         private void FileDrop_DragDrop(object sender, DragEventArgs e)
         {
             string[] fileNames = (string[])e.Data.GetData(DataFormats.FileDrop);
-            
-            li.Items.Add(fileNames[0]);
+            setItem(fileNames[0]);
 
         }
-        private ListViewItem setItem(string filename)
+        private void setItem(string filename)
         {
 
             //아이콘
-            Icon icon;
-            icon = Icon.ExtractAssociatedIcon(filename);
+            Icon icon = Icon.ExtractAssociatedIcon(filename);
 
             objListItems = new ListViewItem();
-
 
             imagelist.ImageSize = new Size(32, 32);
             imagelist.Images.Add(icon);
@@ -62,23 +60,19 @@ namespace WindowsFormsApp1
             li.LargeImageList = imagelist;
             li.SmallImageList = imagelist;
 
-
-            objListItems = li.Items.Add(filename);
-
+            objListItems = li.Items.Add(filename, imageindex++);
 
 
-            return objListItems;
-
-
+            li.Items.Add(objListItems);
+            
         }
-        public void listsetting()
+
+        
+        public void listSetting()
         {
             li = new ListView();
+            
             li.View = View.LargeIcon;
-
-
-
-
             li.AllowDrop = true;
             li.Location = new System.Drawing.Point(6, 6);
             li.Size = new System.Drawing.Size(389, 232);

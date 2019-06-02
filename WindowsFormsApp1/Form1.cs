@@ -13,12 +13,7 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         TabPage myTabPage;
-        ListView li;
-        int i = 0;
-
-
         ImageList imagelist = new ImageList();
-
          List<Subject> subject = new List<Subject>();
 
 
@@ -57,7 +52,7 @@ namespace WindowsFormsApp1
             {
                 myTabPage = new TabPage(temp.Tabname);
 
-                temp.listsetting();
+                temp.listSetting();
                 temp.li.ContextMenuStrip = this.contextMenuStrip1;
 
                 myTabPage.Controls.Add(temp.li);
@@ -69,10 +64,27 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show(Tabcontrol1.SelectedTab.Text+"탭을 삭제 하시겠습니까?","삭제",MessageBoxButtons.YesNo);
+            delTab(result);
+            
+            
+        }
+        private void delTab(DialogResult result)
+        {
             int selectedtabindex = Tabcontrol1.SelectedIndex;
-            Tabcontrol1.TabPages.Remove(Tabcontrol1.SelectedTab);
+            if (result == DialogResult.Yes)
+            {
+                Tabcontrol1.TabPages.Remove(Tabcontrol1.SelectedTab);
+            }
 
-            Tabcontrol1.SelectedIndex = Tabcontrol1.TabCount - 1;
+            if (selectedtabindex == Tabcontrol1.TabCount)
+            {
+                Tabcontrol1.SelectedIndex = Tabcontrol1.TabCount - 1;
+            }
+            else
+            {
+                Tabcontrol1.SelectedIndex = selectedtabindex;
+            }
         }
 
 

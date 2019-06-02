@@ -14,7 +14,7 @@ namespace WindowsFormsApp1
     {
         TabPage myTabPage;
         ImageList imagelist = new ImageList();
-         List<Tab> subject = new List<Tab>();
+         List<Tab> Tab = new List<Tab>();
 
 
 

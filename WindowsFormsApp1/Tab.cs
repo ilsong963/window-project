@@ -58,15 +58,19 @@ namespace WindowsFormsApp1
         //파일 드래그 드롭 핸들러
         private void FileDrop_DragDrop(object sender, DragEventArgs e)
         {
-            string[] fileNames = (string[])e.Data.GetData(DataFormats.FileDrop);
-    
+            DirectoryInfo dirInfo;
 
+            string[] fileNames = (string[])e.Data.GetData(DataFormats.FileDrop);
+      
             foreach (string file in fileNames)
             {
-                if (!isExist(file))
-                {
-                    setItem(file);
-                    li.Items.Add(file, Path.GetFileNameWithoutExtension(file), imageindex++);
+                 dirInfo= new DirectoryInfo(file);
+                if (dirInfo.Attributes.ToString()!= "Directory") {
+                    if (!isExist(file))
+                    {
+                        setItem(file);
+                        li.Items.Add(file, Path.GetFileNameWithoutExtension(file), imageindex++);
+                    }
                 }
             }
         

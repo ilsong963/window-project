@@ -63,20 +63,15 @@ namespace WindowsFormsApp1
 
             foreach (string file in fileNames)
             {
-                setItem(file);
-                li.Items.Add(file, Path.GetFileNameWithoutExtension(file), imageindex++);
+                if (!isExist(file))
+                {
+                    setItem(file);
+                    li.Items.Add(file, Path.GetFileNameWithoutExtension(file), imageindex++);
+                }
             }
         
 
-            /*
-                        if (!isExist(file))
-                        {
-
-                            setItem(file);
-
-                        }
-
-                */
+         
         }
 
         

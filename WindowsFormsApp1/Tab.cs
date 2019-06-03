@@ -51,24 +51,35 @@ namespace WindowsFormsApp1
         //파일 드래그 앤터 핸들러
         private void FileDrop_DragEnter(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            {
+          
                 e.Effect = DragDropEffects.Copy;
-            }
         }
 
         //파일 드래그 드롭 핸들러
         private void FileDrop_DragDrop(object sender, DragEventArgs e)
         {
             string[] fileNames = (string[])e.Data.GetData(DataFormats.FileDrop);
-            if (!isExist(fileNames[0]))
+    
+
+            foreach (string file in fileNames)
             {
-
-                setItem(fileNames[0]);
-
+                setItem(file);
+                li.Items.Add(file, Path.GetFileNameWithoutExtension(file), imageindex++);
             }
+        
 
+            /*
+                        if (!isExist(file))
+                        {
+
+                            setItem(file);
+
+                        }
+
+                */
         }
+
+        
         private bool isExist(string fileName)
         {
 
@@ -98,10 +109,8 @@ namespace WindowsFormsApp1
             li.LargeImageList = imagelist;
             li.SmallImageList = imagelist;
 
-            objListItems = li.Items.Add(filename, Path.GetFileNameWithoutExtension(filename), imageindex++);
-
-            li.Items.Add(objListItems);
             
+
         }
 
         public void listSetting()
@@ -162,19 +171,18 @@ namespace WindowsFormsApp1
                 Process[] processList = Process.GetProcessesByName(li.FocusedItem.Name);
                 if (processList.Length < 1)
                 {
-                   // try
-                  //  {
+                    try { 
                         System.Diagnostics.Process.Start(li.FocusedItem.Name);      // 외부 프로그램 실행
-                 //   }
-                 //   catch (System.ComponentModel.Win32Exception)
-                 //   {
-                 //       DialogResult result=  MessageBox.Show("경로가 수정되었거나 파일이 삭제되었습니다.\n리스트에서 삭제하시겠습니까?", "ERROR", MessageBoxButtons.YesNo);
-                  //      if (result == DialogResult.Yes)
-                  //      {
-                   //         li.FocusedItem.Remove();
-                    //    }
+                    }
+                   catch (System.ComponentModel.Win32Exception)
+                   {
+                       DialogResult result=  MessageBox.Show("경로가 수정되었거나 파일이 삭제되었습니다.\n리스트에서 삭제하시겠습니까?", "ERROR", MessageBoxButtons.YesNo);
+                      if (result == DialogResult.Yes)
+                      {
+                          li.FocusedItem.Remove();
+                      }
 
-                  //  }
+                   }
                 }
                 else
                 {

@@ -12,27 +12,32 @@ namespace WindowsFormsApp1
 {
     public partial class Form2 : System.Windows.Forms.Form
     {
+        // 탭 이름을 넣기위한 Tab객체
         Tab tab;
-        public Form2(Tab tab)
+
+        public Form2( Tab tab)
         {
             InitializeComponent();
             init();
             this.tab = tab;
         }
+
         void init()
         {
+            //항상 최상위
             this.TopMost = true;
-            button1.DialogResult = DialogResult.OK;
-            button2.DialogResult = DialogResult.No;
+
+            ok_btn.DialogResult = DialogResult.OK;
+            cancel_btn.DialogResult = DialogResult.No;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ok_bnt_click(object sender, EventArgs e)
         {
-            tab.Tabname = textBox1.Text;
+            tab.Tabname = tabname_textbox.Text;
             Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void cancel_bnt_click(object sender, EventArgs e)
         {
             Close();
         }

@@ -28,63 +28,63 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Tabcontrol1 = new System.Windows.Forms.TabControl();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.button3 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            this.Tabcontrol = new System.Windows.Forms.TabControl();
+            this.tab_new_btn = new System.Windows.Forms.Button();
+            this.tab_del_btn = new System.Windows.Forms.Button();
+            this.transparency_trackbar = new System.Windows.Forms.TrackBar();
+            this.tab_rename_btn = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.transparency_trackbar)).BeginInit();
             this.SuspendLayout();
             // 
-            // Tabcontrol1
+            // Tabcontrol
             // 
-            this.Tabcontrol1.Location = new System.Drawing.Point(12, 13);
-            this.Tabcontrol1.Name = "Tabcontrol1";
-            this.Tabcontrol1.SelectedIndex = 0;
-            this.Tabcontrol1.Size = new System.Drawing.Size(270, 270);
-            this.Tabcontrol1.TabIndex = 3;
+            this.Tabcontrol.Location = new System.Drawing.Point(12, 13);
+            this.Tabcontrol.Name = "Tabcontrol";
+            this.Tabcontrol.SelectedIndex = 0;
+            this.Tabcontrol.Size = new System.Drawing.Size(270, 270);
+            this.Tabcontrol.TabIndex = 3;
             // 
-            // button1
+            // tab_new_btn
             // 
-            this.button1.Location = new System.Drawing.Point(12, 289);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 32);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "탭 생성";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.tab_new_btn.Location = new System.Drawing.Point(12, 289);
+            this.tab_new_btn.Name = "tab_new_btn";
+            this.tab_new_btn.Size = new System.Drawing.Size(83, 32);
+            this.tab_new_btn.TabIndex = 4;
+            this.tab_new_btn.Text = "탭 생성";
+            this.tab_new_btn.UseVisualStyleBackColor = true;
+            this.tab_new_btn.Click += new System.EventHandler(this.tab_new_btn_click);
             // 
-            // button2
+            // tab_del_btn
             // 
-            this.button2.Location = new System.Drawing.Point(199, 289);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(83, 32);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "탭 삭제";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.tab_del_btn.Location = new System.Drawing.Point(199, 289);
+            this.tab_del_btn.Name = "tab_del_btn";
+            this.tab_del_btn.Size = new System.Drawing.Size(83, 32);
+            this.tab_del_btn.TabIndex = 5;
+            this.tab_del_btn.Text = "탭 삭제";
+            this.tab_del_btn.UseVisualStyleBackColor = true;
+            this.tab_del_btn.Click += new System.EventHandler(this.tab_del_btn_click);
             // 
-            // trackBar1
+            // transparency_trackbar
             // 
-            this.trackBar1.LargeChange = 1;
-            this.trackBar1.Location = new System.Drawing.Point(12, 327);
-            this.trackBar1.Maximum = 8;
-            this.trackBar1.Minimum = 3;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(270, 45);
-            this.trackBar1.TabIndex = 6;
-            this.trackBar1.Value = 8;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.transparency_trackbar.LargeChange = 1;
+            this.transparency_trackbar.Location = new System.Drawing.Point(12, 327);
+            this.transparency_trackbar.Maximum = 8;
+            this.transparency_trackbar.Minimum = 3;
+            this.transparency_trackbar.Name = "transparency_trackbar";
+            this.transparency_trackbar.Size = new System.Drawing.Size(270, 45);
+            this.transparency_trackbar.TabIndex = 6;
+            this.transparency_trackbar.Value = 8;
+            this.transparency_trackbar.Scroll += new System.EventHandler(this.transparency_trackbar_Scroll);
             // 
-            // button3
+            // tab_rename_btn
             // 
-            this.button3.Location = new System.Drawing.Point(105, 289);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(83, 32);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "탭 이름 변경";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.tab_rename_btn.Location = new System.Drawing.Point(105, 289);
+            this.tab_rename_btn.Name = "tab_rename_btn";
+            this.tab_rename_btn.Size = new System.Drawing.Size(83, 32);
+            this.tab_rename_btn.TabIndex = 7;
+            this.tab_rename_btn.Text = "탭 이름 변경";
+            this.tab_rename_btn.UseVisualStyleBackColor = true;
+            this.tab_rename_btn.Click += new System.EventHandler(this.tab_rename_btn_click);
             // 
             // Form1
             // 
@@ -92,27 +92,27 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(294, 368);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.trackBar1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.Tabcontrol1);
+            this.Controls.Add(this.tab_rename_btn);
+            this.Controls.Add(this.transparency_trackbar);
+            this.Controls.Add(this.tab_del_btn);
+            this.Controls.Add(this.tab_new_btn);
+            this.Controls.Add(this.Tabcontrol);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "File Collection";
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transparency_trackbar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.TabControl Tabcontrol1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TabControl Tabcontrol;
+        private System.Windows.Forms.Button tab_new_btn;
+        private System.Windows.Forms.Button tab_del_btn;
+        private System.Windows.Forms.TrackBar transparency_trackbar;
+        private System.Windows.Forms.Button tab_rename_btn;
     }
 }
 

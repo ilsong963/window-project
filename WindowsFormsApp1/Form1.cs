@@ -12,12 +12,10 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+
         TabPage myTabPage;
-        ImageList imagelist = new ImageList();
-        List<Tab> tablist = new List<Tab>();
+        List<Tab> tablist;
 
-
-        public static string title;
 
         public Form1()
         {
@@ -28,14 +26,16 @@ namespace WindowsFormsApp1
         //form1 초기설정
         void init()
         {
-            this.TopMost = true; //항상 위로
+            //항상 위로
+            this.TopMost = true;
+            tablist = new List<Tab>();
         }
 
 
 
 
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void tab_new_btn_click(object sender, EventArgs e)
         {
             Tab temp = new Tab();
             Form2 form2 = new Form2(temp);
@@ -43,33 +43,34 @@ namespace WindowsFormsApp1
             form2.ShowDialog(); //모달 실행
 
 
-
-
-
             if (form2.DialogResult == DialogResult.OK)
             {
                 myTabPage = new TabPage(temp.Tabname);
 
+                //Tab 클래스에 있는 list를 세팅하는 메서드호출
                 temp.listSetting();
 
                 myTabPage.Controls.Add(temp.li);
-                Tabcontrol1.TabPages.Add(myTabPage);
+                Tabcontrol.TabPages.Add(myTabPage);
                 tablist.Add(temp);
             }
-            Tabcontrol1.SelectedIndex = Tabcontrol1.TabCount - 1;
+
+            //선택된 탭인덱스를 증가시켜서 새로만든게 포커싱되도록.
+            Tabcontrol.SelectedIndex = Tabcontrol.TabCount - 1;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void tab_del_btn_click(object sender, EventArgs e)
         {
             if (tablist.Count != 0)
             {
-                DialogResult result = MessageBox.Show(Tabcontrol1.SelectedTab.Text + "탭을 삭제 하시겠습니까?", "삭제", MessageBoxButtons.YesNo);
-                if (Tabcontrol1.TabCount == 0)
+                DialogResult result = MessageBox.Show(Tabcontrol.SelectedTab.Text + "탭을 삭제 하시겠습니까?", "삭제", MessageBoxButtons.YesNo);
+                if (Tabcontrol.TabCount == 0)
                 {
                     MessageBox.Show("삭제할 탭이 없습니다");
                 }
                 else
                 {
+                    //탭 제거 함수 실행
                     delTab(result);
                 }
             }
@@ -79,43 +80,46 @@ namespace WindowsFormsApp1
         }
         private void delTab(DialogResult result)
         {
-            int selectedtabindex = Tabcontrol1.SelectedIndex;
+            int selectedtabindex = Tabcontrol.SelectedIndex;
 
             if (result == DialogResult.Yes)
             {
-                tablist.RemoveAt(Tabcontrol1.SelectedIndex);
-                Tabcontrol1.TabPages.Remove(Tabcontrol1.SelectedTab);
+                tablist.RemoveAt(Tabcontrol.SelectedIndex);
+                Tabcontrol.TabPages.Remove(Tabcontrol.SelectedTab);
             }
 
-            if (selectedtabindex == Tabcontrol1.TabCount)
+            // 탭의 포커싱 제어
+            if (selectedtabindex == Tabcontrol.TabCount)
             {
-                Tabcontrol1.SelectedIndex = Tabcontrol1.TabCount - 1;
+                Tabcontrol.SelectedIndex = Tabcontrol.TabCount - 1;
             }
             else
             {
-                Tabcontrol1.SelectedIndex = selectedtabindex;
+                Tabcontrol.SelectedIndex = selectedtabindex;
             }
 
         }
 
 
         //투명도 조절
-        private void trackBar1_Scroll(object sender, EventArgs e)
+        private void transparency_trackbar_Scroll(object sender, EventArgs e)
         {
-            this.Opacity = trackBar1.Value * 0.125;
+            this.Opacity = transparency_trackbar.Value * 0.125;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void tab_rename_btn_click(object sender, EventArgs e)
         {
             if (tablist.Count != 0)
             {
-                Form2 form2 = new Form2(tablist[Tabcontrol1.SelectedIndex]);
+                Form2 form2 = new Form2(tablist[Tabcontrol.SelectedIndex]);
                 this.AddOwnedForm(form2);
                 form2.ShowDialog(); //모달 실행
-                Tabcontrol1.SelectedTab.Text = tablist[Tabcontrol1.SelectedIndex].Tabname;
+                Tabcontrol.SelectedTab.Text = tablist[Tabcontrol.SelectedIndex].Tabname;
             }
             else
                 MessageBox.Show("이름을 변경할 탭이 없습니다");
         }
+
+
     }
 }

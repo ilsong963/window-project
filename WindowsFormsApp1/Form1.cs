@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
 
 
         public static string title;
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -32,13 +32,12 @@ namespace WindowsFormsApp1
         }
 
 
-      
+
 
 
         private void button1_Click_1(object sender, EventArgs e)
         {
             Tab temp = new Tab();
-            tablist.Add(temp);
             Form2 form2 = new Form2(temp);
             this.AddOwnedForm(form2);
             form2.ShowDialog(); //모달 실행
@@ -52,33 +51,41 @@ namespace WindowsFormsApp1
                 myTabPage = new TabPage(temp.Tabname);
 
                 temp.listSetting();
-                
+
                 myTabPage.Controls.Add(temp.li);
                 Tabcontrol1.TabPages.Add(myTabPage);
+                tablist.Add(temp);
             }
+            else
 
-            Tabcontrol1.SelectedIndex = Tabcontrol1.TabCount-1;
+            Tabcontrol1.SelectedIndex = Tabcontrol1.TabCount - 1;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show(Tabcontrol1.SelectedTab.Text+"탭을 삭제 하시겠습니까?","삭제",MessageBoxButtons.YesNo);
-            if (Tabcontrol1.TabCount == 0)
+            if (tablist.Count != 0)
             {
-                MessageBox.Show("삭제할 탭이 없습니다");
+                DialogResult result = MessageBox.Show(Tabcontrol1.SelectedTab.Text + "탭을 삭제 하시겠습니까?", "삭제", MessageBoxButtons.YesNo);
+                if (Tabcontrol1.TabCount == 0)
+                {
+                    MessageBox.Show("삭제할 탭이 없습니다");
+                }
+                else
+                {
+                    delTab(result);
+                }
             }
             else
-            {
-                delTab(result);
-            }
-            
-            
+                MessageBox.Show("삭제할 탭이 없습니다");
+
         }
         private void delTab(DialogResult result)
         {
             int selectedtabindex = Tabcontrol1.SelectedIndex;
+
             if (result == DialogResult.Yes)
             {
+                tablist.RemoveAt(Tabcontrol1.SelectedIndex);
                 Tabcontrol1.TabPages.Remove(Tabcontrol1.SelectedTab);
             }
 
@@ -90,6 +97,7 @@ namespace WindowsFormsApp1
             {
                 Tabcontrol1.SelectedIndex = selectedtabindex;
             }
+
         }
 
 
@@ -101,11 +109,15 @@ namespace WindowsFormsApp1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2(tablist[Tabcontrol1.SelectedIndex]);
-            this.AddOwnedForm(form2);
-            form2.ShowDialog(); //모달 실행
-            Tabcontrol1.SelectedTab.Text = tablist[Tabcontrol1.SelectedIndex].Tabname;
-
+            if (tablist.Count != 0)
+            {
+                Form2 form2 = new Form2(tablist[Tabcontrol1.SelectedIndex]);
+                this.AddOwnedForm(form2);
+                form2.ShowDialog(); //모달 실행
+                Tabcontrol1.SelectedTab.Text = tablist[Tabcontrol1.SelectedIndex].Tabname;
+            }
+            else
+                MessageBox.Show("이름을 변경할 탭이 없습니다");
         }
     }
 }

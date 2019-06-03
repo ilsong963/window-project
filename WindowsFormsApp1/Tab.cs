@@ -155,8 +155,13 @@ namespace WindowsFormsApp1
         }
         private void menuItem1_Click(object sender, System.EventArgs e)
         {
-
             li.FocusedItem.Remove();
+        }
+        public static void ShowOpenWithDialog(string path)
+        {
+            var args = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "shell32.dll");
+            args += ",OpenAs_RunDLL " + path;
+            Process.Start("rundll32.exe", args);
         }
 
         private void DoubleClick(object sender, MouseEventArgs e)
@@ -169,15 +174,24 @@ namespace WindowsFormsApp1
                     try { 
                         System.Diagnostics.Process.Start(li.FocusedItem.Name);      // 외부 프로그램 실행
                     }
-                   catch (System.ComponentModel.Win32Exception)
+                   catch (System.ComponentModel.Win32Exception ex)
                    {
-                       DialogResult result=  MessageBox.Show("경로가 수정되었거나 파일이 삭제되었습니다.\n리스트에서 삭제하시겠습니까?", "ERROR", MessageBoxButtons.YesNo);
-                      if (result == DialogResult.Yes)
-                      {
-                          li.FocusedItem.Remove();
-                      }
+                        switch (ex.NativeErrorCode)
+                        {
+                            case 2:
+                                DialogResult result = MessageBox.Show("기존 파일의 경로가 변경되었습니다. \n리스트에서 삭제하시겠습니까?", "ERROR", MessageBoxButtons.YesNo);
+                                if (result == DialogResult.Yes)
+                                {
+                                    li.FocusedItem.Remove();
+                                }
+                                break;
+                            case 1155:
+                                ShowOpenWithDialog(li.FocusedItem.Name);
+                                break;
+                        }
+                       
 
-                   }
+                    }
                 }
                 else
                 {

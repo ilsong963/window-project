@@ -54,9 +54,8 @@ namespace WindowsFormsApp1
 
                 myTabPage.Controls.Add(temp.li);
                 Tabcontrol1.TabPages.Add(myTabPage);
+                tablist.Add(temp);
             }
-            else
-
             Tabcontrol1.SelectedIndex = Tabcontrol1.TabCount - 1;
         }
 

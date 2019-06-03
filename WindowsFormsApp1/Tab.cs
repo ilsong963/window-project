@@ -162,19 +162,19 @@ namespace WindowsFormsApp1
                 Process[] processList = Process.GetProcessesByName(li.FocusedItem.Name);
                 if (processList.Length < 1)
                 {
-                    try
-                    {
+                   // try
+                  //  {
                         System.Diagnostics.Process.Start(li.FocusedItem.Name);      // 외부 프로그램 실행
-                    }
-                    catch (System.ComponentModel.Win32Exception)
-                    {
-                        DialogResult result=  MessageBox.Show("경로가 수정되었거나 파일이 삭제되었습니다.\n리스트에서 삭제하시겠습니까?", "ERROR", MessageBoxButtons.YesNo);
-                        if (result == DialogResult.Yes)
-                        {
-                            li.FocusedItem.Remove();
-                        }
+                 //   }
+                 //   catch (System.ComponentModel.Win32Exception)
+                 //   {
+                 //       DialogResult result=  MessageBox.Show("경로가 수정되었거나 파일이 삭제되었습니다.\n리스트에서 삭제하시겠습니까?", "ERROR", MessageBoxButtons.YesNo);
+                  //      if (result == DialogResult.Yes)
+                  //      {
+                   //         li.FocusedItem.Remove();
+                    //    }
 
-                    }
+                  //  }
                 }
                 else
                 {

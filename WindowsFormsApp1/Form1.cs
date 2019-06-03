@@ -14,8 +14,7 @@ namespace WindowsFormsApp1
     {
         TabPage myTabPage;
         ImageList imagelist = new ImageList();
-         List<Tab> Tab = new List<Tab>();
-
+        List<Tab> tablist = new List<Tab>();
 
 
         public static string title;
@@ -39,7 +38,7 @@ namespace WindowsFormsApp1
         private void button1_Click_1(object sender, EventArgs e)
         {
             Tab temp = new Tab();
-
+            tablist.Add(temp);
             Form2 form2 = new Form2(temp);
             this.AddOwnedForm(form2);
             form2.ShowDialog(); //모달 실행
@@ -53,7 +52,7 @@ namespace WindowsFormsApp1
                 myTabPage = new TabPage(temp.Tabname);
 
                 temp.listSetting();
-
+                
                 myTabPage.Controls.Add(temp.li);
                 Tabcontrol1.TabPages.Add(myTabPage);
             }
@@ -64,7 +63,14 @@ namespace WindowsFormsApp1
         private void button2_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(Tabcontrol1.SelectedTab.Text+"탭을 삭제 하시겠습니까?","삭제",MessageBoxButtons.YesNo);
-            delTab(result);
+            if (Tabcontrol1.TabCount == 0)
+            {
+                MessageBox.Show("삭제할 탭이 없습니다");
+            }
+            else
+            {
+                delTab(result);
+            }
             
             
         }
@@ -93,15 +99,13 @@ namespace WindowsFormsApp1
             this.Opacity = trackBar1.Value * 0.125;
         }
 
-        private void listView1_MouseClick(object sender, MouseEventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
+            Form2 form2 = new Form2(tablist[Tabcontrol1.SelectedIndex]);
+            this.AddOwnedForm(form2);
+            form2.ShowDialog(); //모달 실행
+            Tabcontrol1.SelectedTab.Text = tablist[Tabcontrol1.SelectedIndex].Tabname;
 
         }
-
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-
-        }
-        
     }
 }

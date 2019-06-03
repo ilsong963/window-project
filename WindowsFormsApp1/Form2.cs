@@ -36,10 +36,6 @@ namespace WindowsFormsApp1
         {
             Close();
         }
-
-        private void Form2_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-
-        }
+        
     }
 }

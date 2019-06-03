@@ -111,7 +111,6 @@ namespace WindowsFormsApp1
         public void listSetting()
         {
             li = new ListView();
-
             li.View = View.Tile;
 
             li.AllowDrop = true;

@@ -37,17 +37,17 @@
             // 
             // Tabcontrol1
             // 
-            this.Tabcontrol1.Location = new System.Drawing.Point(12, 12);
+            this.Tabcontrol1.Location = new System.Drawing.Point(12, 13);
             this.Tabcontrol1.Name = "Tabcontrol1";
             this.Tabcontrol1.SelectedIndex = 0;
-            this.Tabcontrol1.Size = new System.Drawing.Size(419, 267);
+            this.Tabcontrol1.Size = new System.Drawing.Size(270, 270);
             this.Tabcontrol1.TabIndex = 3;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(261, 285);
+            this.button1.Location = new System.Drawing.Point(12, 289);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(121, 32);
             this.button1.TabIndex = 4;
             this.button1.Text = "생성";
             this.button1.UseVisualStyleBackColor = true;
@@ -55,9 +55,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(346, 285);
+            this.button2.Location = new System.Drawing.Point(161, 289);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(121, 32);
             this.button2.TabIndex = 5;
             this.button2.Text = "삭제";
             this.button2.UseVisualStyleBackColor = true;
@@ -66,11 +66,11 @@
             // trackBar1
             // 
             this.trackBar1.LargeChange = 1;
-            this.trackBar1.Location = new System.Drawing.Point(12, 285);
+            this.trackBar1.Location = new System.Drawing.Point(12, 327);
             this.trackBar1.Maximum = 8;
             this.trackBar1.Minimum = 3;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(150, 45);
+            this.trackBar1.Size = new System.Drawing.Size(270, 45);
             this.trackBar1.TabIndex = 6;
             this.trackBar1.Value = 8;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
@@ -80,7 +80,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(443, 331);
+            this.ClientSize = new System.Drawing.Size(294, 368);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

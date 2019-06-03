@@ -65,6 +65,7 @@ namespace WindowsFormsApp1
             {
 
                 setItem(fileNames[0]);
+
             }
 
         }
@@ -90,7 +91,7 @@ namespace WindowsFormsApp1
 
             objListItems = new ListViewItem();
 
-            imagelist.ImageSize = new Size(32, 32);
+            imagelist.ImageSize = new Size(25, 25);
             imagelist.Images.Add(icon.ToBitmap());
 
 
@@ -99,24 +100,25 @@ namespace WindowsFormsApp1
 
             objListItems = li.Items.Add(filename, Path.GetFileNameWithoutExtension(filename), imageindex++);
 
-
             li.Items.Add(objListItems);
-
+            
         }
 
         public void listSetting()
         {
             li = new ListView();
 
-            li.View = View.LargeIcon;
+            li.View = View.Tile;
+
             li.AllowDrop = true;
             li.Location = new System.Drawing.Point(6, 6);
-            li.Size = new System.Drawing.Size(400, 230);
+            li.Size = new System.Drawing.Size(250, 235);
             li.TabIndex = 0;
             li.DragDrop += new System.Windows.Forms.DragEventHandler(this.FileDrop_DragDrop);
             li.DragEnter += new System.Windows.Forms.DragEventHandler(this.FileDrop_DragEnter);
             li.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DoubleClick);
             li.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MouseClick);
+       
         }
         private void MouseClick(object sender, MouseEventArgs e)
         {
@@ -160,8 +162,19 @@ namespace WindowsFormsApp1
                 Process[] processList = Process.GetProcessesByName(li.FocusedItem.Name);
                 if (processList.Length < 1)
                 {
-                    System.Diagnostics.Process.Start(li.FocusedItem.Name);      // 외부 프로그램 실행
+                    try
+                    {
+                        System.Diagnostics.Process.Start(li.FocusedItem.Name);      // 외부 프로그램 실행
+                    }
+                    catch (System.ComponentModel.Win32Exception)
+                    {
+                        DialogResult result=  MessageBox.Show("경로가 수정되었거나 파일이 삭제되었습니다.\n리스트에서 삭제하시겠습니까?", "ERROR", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                        {
+                            li.FocusedItem.Remove();
+                        }
 
+                    }
                 }
                 else
                 {

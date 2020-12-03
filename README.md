@@ -5,7 +5,8 @@
 내가 OOO이라면 이라는 주제에 맞춰 내가 과제가 많은 대학생이라면 이라는 주제를 선정해서 만든 프로그램
 </br>
 ## 사용언어
-C#
+C#</br>
+메인 폼 : https://github.com/ilsong963/window-project/blob/master/WindowsFormsApp/Form1.cs
 </br>
 ## 스크린샷
 초기실행화면
